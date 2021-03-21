@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.2 (1.0.2+r75+1)"
+   sodipodi:docname="drawing.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="414.13567"
+     inkscape:cy="184.46325"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="true"
+     inkscape:snap-nodes="true"
+     inkscape:snap-grids="true"
+     inkscape:snap-to-guides="false"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:window-width="959"
+     inkscape:window-height="1028"
+     inkscape:window-x="960"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:snap-global="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid899"
+       spacingx="13.229167"
+       spacingy="13.229167" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 26.458334,79.375002 52.916667,26.458336 H 132.29166 V 79.375002 L 185.20833,52.916669 132.29166,26.458336"
+       id="path869"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 26.458334,79.375002 79.375,105.83334 132.29166,79.375002"
+       id="path871"
+       sodipodi:nodetypes="ccc" />
+    <circle
+       style="fill:#ffaf99;stroke:#fefefe;stroke-width:1.01942;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:1"
+       id="path833"
+       cx="26.458334"
+       cy="79.375"
+       r="12.760405" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="24.098259"
+       y="83.126778"
+       id="text837"><tspan
+         sodipodi:role="line"
+         id="tspan835"
+         x="24.098259"
+         y="83.126778"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';stroke-width:0.264583">1</tspan></text>
+    <circle
+       style="fill:#ffaf99;stroke:#fefefe;stroke-width:1.01942;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:1"
+       id="circle839"
+       cx="52.916664"
+       cy="26.458336"
+       r="12.760405" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="50.032719"
+       y="30.289492"
+       id="text843"><tspan
+         sodipodi:role="line"
+         id="tspan841"
+         x="50.032719"
+         y="30.289492"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';stroke-width:0.264583">2</tspan></text>
+    <circle
+       style="fill:#ffaf99;stroke:#fefefe;stroke-width:1.01942;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:1"
+       id="circle845"
+       cx="79.375"
+       cy="105.83332"
+       r="12.760405" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="76.491051"
+       y="109.61687"
+       id="text849"><tspan
+         sodipodi:role="line"
+         id="tspan847"
+         x="76.491051"
+         y="109.61687"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';stroke-width:0.264583">3</tspan></text>
+    <circle
+       style="fill:#ffaf99;stroke:#fefefe;stroke-width:1.01942;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:1"
+       id="circle851"
+       cx="132.29167"
+       cy="26.458336"
+       r="12.760405" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="129.40242"
+       y="30.210117"
+       id="text855"><tspan
+         sodipodi:role="line"
+         id="tspan853"
+         x="129.40242"
+         y="30.210117"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';stroke-width:0.264583">4</tspan></text>
+    <circle
+       style="fill:#ffaf99;stroke:#fefefe;stroke-width:1.01942;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:1"
+       id="circle857"
+       cx="132.29167"
+       cy="79.375"
+       r="12.760405" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="129.41301"
+       y="83.079155"
+       id="text861"><tspan
+         sodipodi:role="line"
+         id="tspan859"
+         x="129.41301"
+         y="83.079155"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';stroke-width:0.264583">5</tspan></text>
+    <circle
+       style="fill:#ffaf99;stroke:#fefefe;stroke-width:1.01942;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:1"
+       id="circle863"
+       cx="185.20833"
+       cy="52.916668"
+       r="12.760405" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10.5833px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="182.29263"
+       y="56.700199"
+       id="text867"><tspan
+         sodipodi:role="line"
+         id="tspan865"
+         x="182.29263"
+         y="56.700199"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';stroke-width:0.264583">6</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;line-height:1.25;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="25.282171"
+       y="50.117233"
+       id="text893"><tspan
+         sodipodi:role="line"
+         id="tspan891"
+         x="25.282171"
+         y="50.117233"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;stroke-width:0.264583">1.5</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;line-height:1.25;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="43.396259"
+       y="104.19949"
+       id="text897"><tspan
+         sodipodi:role="line"
+         id="tspan895"
+         x="43.396259"
+         y="104.19949"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;stroke-width:0.264583">1.5</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;line-height:1.25;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="86.144112"
+       y="22.083946"
+       id="text903"><tspan
+         sodipodi:role="line"
+         id="tspan901"
+         x="86.144112"
+         y="22.083946"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;stroke-width:0.264583">3.0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;line-height:1.25;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="107.87217"
+       y="102.28984"
+       id="text907"><tspan
+         sodipodi:role="line"
+         id="tspan905"
+         x="107.87217"
+         y="102.28984"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;stroke-width:0.264583">4.5</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;line-height:1.25;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="116.91729"
+       y="56.428562"
+       id="text911"><tspan
+         sodipodi:role="line"
+         id="tspan909"
+         x="116.91729"
+         y="56.428562"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;stroke-width:0.264583">2.0</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;line-height:1.25;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="160.01111"
+       y="75.550758"
+       id="text915"><tspan
+         sodipodi:role="line"
+         id="tspan913"
+         x="160.01111"
+         y="75.550758"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;stroke-width:0.264583">2.5</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;line-height:1.25;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="158.51907"
+       y="34.481571"
+       id="text919"><tspan
+         sodipodi:role="line"
+         id="tspan917"
+         x="158.51907"
+         y="34.481571"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;stroke-width:0.264583">2.5</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;line-height:1.25;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="21.846561"
+       y="97.485962"
+       id="text937"><tspan
+         sodipodi:role="line"
+         id="tspan935"
+         x="21.846561"
+         y="97.485962"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;stroke-width:0.264583">(0,0)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;line-height:1.25;font-family:'TeX Gyre Heros';-inkscape-font-specification:'TeX Gyre Heros';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="180.7515"
+       y="71.424553"
+       id="text941"><tspan
+         sodipodi:role="line"
+         id="tspan939"
+         x="180.7515"
+         y="71.424553"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;stroke-width:0.264583">(6,1)</tspan></text>
+  </g>
+</svg>
