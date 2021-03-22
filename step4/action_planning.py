@@ -33,41 +33,31 @@ def put_down(state):
     return state._replace(holding=None), 1, 'put down ' + state.holding
 
 
-def turn_on_faucet(state):
-    precondition = (state.pos == 'sink' and not state.faucet_on)
+def turn_on(state, object, required_pos):
+    precondition = (state.pos == required_pos
+                    and not getattr(state, object + '_on'))
     if not precondition:
         return None
 
-    state = state._replace(faucet_on=True)
-
-    if state.pot_pos == 'sink':
-        state = state._replace(pot_filled=True)
-
-    return state._replace(faucet_on=True), 1, 'turn on faucet'
+    activated_object = {object + '_on': True}
+    return state._replace(**activated_object), 1, 'turn on ' + object
 
 
-def turn_off_faucet(state):
-    precondition = (state.pos == 'sink' and state.faucet_on)
+def turn_off(state, object, required_pos):
+    precondition = (state.pos == required_pos
+                    and getattr(state, object + '_on'))
     if not precondition:
         return None
 
-    return state._replace(faucet_on=False), 1, 'turn off faucet'
+    deactivated_object = {object + '_on': False}
+    return state._replace(**deactivated_object), 1, 'turn off ' + object
 
 
-def turn_on_stove(state):
-    precondition = (state.pos == 'stove' and not state.stove_on)
-    if not precondition:
-        return None
+def wait(state):
+    if state.pot_pos == 'sink' and state.faucet_on:
+        return state._replace(pot_filled=True), 1, 'wait'
 
-    return state._replace(stove_on=True), 1, 'turn on stove'
-
-
-def turn_off_stove(state):
-    precondition = (state.pos == 'stove' and state.stove_on)
-    if not precondition:
-        return None
-
-    return state._replace(stove_on=False), 1, 'turn off stove'
+    return state._replace(), 1, 'wait'
 
 
 def neighbors(state):
@@ -75,8 +65,11 @@ def neighbors(state):
 
     states += [move(state, pos) for pos in ['sink', 'counter', 'stove']]
     states += [pick_up(state, 'pot'), put_down(state)]
-    states += [turn_on_faucet(state), turn_off_faucet(state)]
-    states += [turn_on_stove(state), turn_off_stove(state)]
+    states += [turn_on(state, 'faucet', 'sink'),
+               turn_off(state, 'faucet', 'sink'),
+               turn_on(state, 'stove', 'stove'),
+               turn_off(state, 'stove', 'stove')]
+    states += [wait(state)]
 
     states = [state for state in states if state is not None]
 
