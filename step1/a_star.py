@@ -2,7 +2,7 @@
 
 
 def neighbors(id):
-    # Tuples of (destination, effort)
+    # Tuples of (destination, cost)
     linkage_map = {
         1: [(2, 1.5), (3, 1.5)],
         2: [(1, 1.5), (4, 3.0)],
