@@ -39,10 +39,7 @@ def a_star(start, goal, neighbors, h):
         if len(tuple_diff(current, goal)) == 0:
             return reconstruct_path(came_from, current)
 
-        # print()
-        # print(current)
         for neighbor, d, action in neighbors(current):
-            # print(desc)
             tentative_g_score = g_score.get(current, INF) + d
             if tentative_g_score < g_score.get(neighbor, INF):
                 # This path to neighbor is the best one seen so far

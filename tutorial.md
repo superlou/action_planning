@@ -153,3 +153,180 @@ Please play with the edge costs and see how they affect the selected path.
 ## Introducing the `namedtuple`
 
 There's something really cool here: the `a_star` function doesn't care what a node is. So long as a node has a unique ID and neighbors returns the cost of getting to new nodes with unique IDs, there's no reason this function can't operate on states from our action planning problem domain.
+
+The A* search relies on being able to uniquely identify nodes. The dictionaries we store `f` and `g` scores in need to be able to identify if a node is new or is being revisited. When we ask for the neighbors of a node, it's very possible that we are doubling back. In the toy example earlier, we manually gave each node a unique ID.
+
+Fortunately, since we're storing this information in dictionaries, and Python dictionaries can treat any hashable datatype as a key, we just need to make sure our state is hashable. To do this, we use the `namdetuple` factory function. Technically, we could use tuples, but these will make the code more readable.
+
+The following captures the state of a node in the boil-water problem domain:
+
+```python
+State = namedtuple('State', ('pos', 'pot_pos', 'pot_filled', 'faucet_on',
+                             'stove_on', 'holding'))
+
+# Create an initial condition
+s0 = State(pos='counter', pot_pos='counter', pot_filled=False,
+           faucet_on=False, stove_on=False, holding=None)
+```
+
+One thing to note with tuples is that they are immutable. Their values can't be changed, but a new tuple based on another can be created.
+
+```python
+s0.pos = 'stove'                # Doesn't work
+s1 = s0._replace(pos='stove')   # Works
+```
+
+## A New Heuristic
+
+Now that nodes don't represent physical locations, the Manhattan distance no longer works as a search heuristic. If the goal is to find a node as similar as possible to the goal, a node with fewer differing variables is likely closer to the goal. Remember, it's just an estimate to improve the search performance, not crucial to the ability of eventually finding a path.
+
+We'll also recognize that not all state variables matter to our goal.
+
+```python
+fields = ('pos', 'pot_pos', 'pot_filled', 'faucet_on', 'stove_on', 'holding')
+State = namedtuple('State', fields, defaults=(...,) * len(fields))
+
+s0 = State(pos='counter', pot_pos='counter', pot_filled=False,
+           faucet_on=False, stove_on=False, holding=None)
+
+# Where fields are not assigned a value, they default to Ellipsis (...)
+s_goal = State(pot_pos='stove', stove_on=True, pot_filled=True, holding=None)
+
+def heuristic(node, goal):
+    """ Estimate of cost to reach goal from node """
+    return len(tuple_diff(node, goal))
+
+def tuple_diff(a, b):
+    # Return a list of all fields that differ between tuples a and b, ignoring
+    # fields marked Ellipsis in either field.
+    return [(field, getattr(a, field), getattr(b, field))
+            for field in b._fields
+            if getattr(a, field) != getattr(b, field) and
+            getattr(a, field) != ... and getattr(b, field) != ...]
+```
+
+## Describing Neighbors in the Problem Domain
+
+The last piece missing for A* is the neighbors function. It still receives a node in the graph, now a state, but the edges between nodes, actions, are going to be more interesting.
+
+```python
+def neighbors(state):
+    # We still a list of connected states and the cost
+    # of traveling to them from the current state as tuples, but the shape
+    # of the function is the same as before.
+    states = [move(state, pos) for pos in ['sink', 'counter', 'stove']]
+    states = [state for state in states if state is not None]
+    return states
+
+def move(state, to):
+    if state.pos == to:
+        return None
+
+    state = state._replace(pos=to)
+
+    if state.holding is not None:
+        moving_object = {state.holding + '_pos': to}
+        state = state._replace(**moving_object)
+
+    return state, 1, 'move to ' + to
+```
+
+All actions will be defined as functions that return a 3-value tuple with the new state, the cost of the action, and a text string describing the action. The text description isn't necessary for the A* search, but it will capture the action required to get from the start to the goal. Also, if the move function can't construct a new state for the given parameters (the edge doesn't exist), it returns None. The `neighbors` function will discard it.
+
+We start out by adding all possible move actions. The chef can move to the sink, counter, and stove at will, but it doesn't make sense to allow the chef to move to a place that he's already been. This is the *precondition*, and if the precondition isn't met, there is no new node connected. This is very similar to the approach by classical planners like [STRIPS](https://en.wikipedia.org/wiki/Stanford_Research_Institute_Problem_Solver), except it is extended to operate on procedural conditions as with [GOAP](https://alumni.media.mit.edu/~jorkin/goap.html).
+
+Continuing with the heavy influence from GOAP, the effects of the action are also procedural. The position of the chef is updated to be the passed parameter, and if the chef is holding an object, the position of that object is updated as well.
+
+All of the actions the chef can take are defined in the same manner: first, check if the preconditions are met, second, return a new state with the effects of the action applied. The final list of actions is:
+
+```python
+def neighbors(state):
+    states = []
+
+    states += [move(state, pos) for pos in ['sink', 'counter', 'stove']]
+    states += [pick_up(state, 'pot'), put_down(state)]
+    states += [turn_on(state, 'faucet', 'sink'),
+               turn_off(state, 'faucet', 'sink'),
+               turn_on(state, 'stove', 'stove'),
+               turn_off(state, 'stove', 'stove')]
+    states += [wait(state)]
+
+    states = [state for state in states if state is not None]
+
+    return states
+```
+
+## Running the Planner
+
+A tweak to the A* search algorithm is required to keep track of the action descriptions. Previously, every edge implied a "move," so it wasn't needed before.
+
+
+```python
+def reconstruct_path(came_from, current):
+    total_path = [(current, 'goal')]
+
+    while current in came_from:
+        current, action = came_from[current]
+        total_path.insert(0, (current, action))
+
+    return total_path
+
+def a_star(start, goal, neighbors, h):
+  ...
+        for neighbor, d, action in neighbors(current):
+            tentative_g_score = g_score.get(current, INF) + d
+            if tentative_g_score < g_score.get(neighbor, INF):
+                # This path to neighbor is the best one seen so far
+                came_from[neighbor] = current, action
+                g_score[neighbor] = tentative_g_score
+                f_score[neighbor] = g_score[neighbor] + h(neighbor, goal)
+
+                if neighbor not in open_set:
+                    open_set.append(neighbor)
+
+```
+
+With this change, running the planner is run in the same way as before.
+
+```python
+if __name__ == '__main__':
+    s0 = State(pos='counter', pot_pos='counter', pot_filled=False,
+               faucet_on=False, stove_on=False, holding=None)
+    s_goal = State(pot_pos='stove', stove_on=True, pot_filled=True, holding=None)
+    path = a_star(s0, s_goal, neighbors, heuristic)
+    print('Path:')
+
+    for step in path:
+        print(step[1])
+```
+
+The search result is:
+
+```
+Path:
+pick up pot
+move to sink
+turn on faucet
+wait
+move to stove
+put down pot
+turn on stove
+goal
+```
+
+This looks pretty good, but we left the water faucet running! If we look back at `s_goal`, it's because we didn't require the faucet to be off in the goal. Making the responsible modification to the goal, the new path is:
+
+```
+Path:
+pick up pot
+move to sink
+turn on faucet
+wait
+turn off faucet
+move to stove
+put down pot
+turn on stove
+goal
+```
+
+Much better.

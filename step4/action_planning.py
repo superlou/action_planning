@@ -88,7 +88,8 @@ def heuristic(node, goal):
 if __name__ == '__main__':
     s0 = State(pos='counter', pot_pos='counter', pot_filled=False,
                faucet_on=False, stove_on=False, holding=None)
-    s_goal = State(pot_pos='stove', stove_on=True, pot_filled=True, holding=None)
+    s_goal = State(pot_pos='stove', stove_on=True, pot_filled=True, holding=None,
+                   faucet_on=False)
     path = a_star(s0, s_goal, neighbors, heuristic)
     print('Path:')
 
