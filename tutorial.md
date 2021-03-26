@@ -15,14 +15,14 @@ We'll explore a toy problem domain: a kitchen composed of an empty pot sitting o
 
 The chef's actions can change the state of the world. If the planner tells the chef to pick up the pot, the chef's hand is now holding the pot, but no other variables have changed. If the planner next tells the chef to move to the sink, both the chef's position and the pot's position change. After each action, we arrive at a new state.
 
-| Variable      | s0      | s1, pick up pot | s2, move to sink |
-| ------------- | ------- | --------------- | ---------------- |
-| Chef position | counter | counter         | sink             |
-| Chef holding  | empty   | pot             | pot              |
-| Pot position  | counter | counter         | sink             |
-| Pot contents  | empty   | empty           | empty            |
-| Faucet        | off     | off             | off              |
-| Stove         | off     | off             | off              |
+| Variable      | s0      | pick up pot ➔ s1 | move to sink ➔ s2 |
+| ------------- | ------- | ---------------- | ----------------- |
+| Chef position | counter | counter          | sink              |
+| Chef holding  | empty   | pot              | pot               |
+| Pot position  | counter | counter          | sink              |
+| Pot contents  | empty   | empty            | empty             |
+| Faucet        | off     | off              | off               |
+| Stove         | off     | off              | off               |
 
 However, there are some actions that don't make any sense for a given state. From s0 or s1, the planner couldn't have the chef turn on the faucet, since they're not standing at it. The network of all possible states connected by all valid actions creates a graph, and so the problem for the planner is to find the most efficient route through this graph from initial state to goal state.
 
@@ -144,7 +144,7 @@ if __name__ == '__main__':
 
 The result is:
 
-```sh
+```
 Path: [1, 2, 4, 6]
 ```
 
