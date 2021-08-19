@@ -15,8 +15,8 @@ INF = float('inf')
 def tuple_diff(a, b):
     return [(field, getattr(a, field), getattr(b, field))
             for field in b._fields
-            if getattr(a, field) != getattr(b, field) and
-            getattr(a, field) != ... and getattr(b, field) != ...]
+            if getattr(a, field) != getattr(b, field)
+            and getattr(a, field) != ... and getattr(b, field) != ...]
 
 
 def a_star(start, goal, neighbors, h):
@@ -36,7 +36,8 @@ def a_star(start, goal, neighbors, h):
         open_set.sort(key=lambda id: f_score.get(id, INF))
         current = open_set.pop(0)
 
-        if len(tuple_diff(current, goal)) == 0:
+        # if len(tuple_diff(current, goal)) == 0:
+        if h(current, goal) == 0:
             return reconstruct_path(came_from, current)
 
         for neighbor, d, action in neighbors(current):
