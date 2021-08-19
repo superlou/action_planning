@@ -1,0 +1,11 @@
+{
+  "world": {
+    "posCoords": [
+      (0, 0), ...
+    ]
+    "posMoveGroups": [1, 1, 1, 1, 2, 2, 2, 2]
+  },
+  "state": {
+    "actorPos": 0,
+  }
+}
