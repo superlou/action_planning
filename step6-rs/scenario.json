@@ -4,8 +4,11 @@
       (0, 0), ...
     ]
     "posMoveGroups": [1, 1, 1, 1, 2, 2, 2, 2]
+    "doorSideA": [3],
+    "doorSideB": [4]
   },
   "state": {
     "actorPos": 0,
+    "doorStates": ["open"],
   }
 }
