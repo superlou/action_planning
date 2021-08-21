@@ -1,14 +1,16 @@
 use std::collections::HashMap;
 
+type Cost = f32;
+
 #[derive(Debug)]
 pub struct Neighbor<S, A> {
     state: S,
-    cost: f32,
+    cost: Cost,
     action: A,
 }
 
 impl<S, A> Neighbor<S, A> {
-    pub fn new(state: S, cost: f32, action: A) -> Neighbor<S, A> {
+    pub fn new(state: S, cost: Cost, action: A) -> Neighbor<S, A> {
         Neighbor {
             state,
             cost,

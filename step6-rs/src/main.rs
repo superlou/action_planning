@@ -3,13 +3,14 @@ mod a_star;
 use a_star::{a_star, Neighbor};
 
 type PosId = usize;
-type Cost = f32;
+type DoorId = usize;
+type PosMoveGroupId = usize;
 
 #[derive(Debug, Clone)]
 pub enum Action {
     Move { to: PosId },
-    OpenDoor { door: usize },
-    TraverseDoor { door: usize },
+    OpenDoor { door: DoorId },
+    TraverseDoor { door: DoorId },
 }
 
 #[derive(Debug, PartialEq, Eq, Hash, Clone)]
@@ -27,9 +28,9 @@ pub struct State {
 }
 
 pub struct World {
-    pub pos_move_groups: Vec<usize>,
-    pub door_side_a: Vec<usize>,
-    pub door_side_b: Vec<usize>,
+    pub pos_move_groups: Vec<PosMoveGroupId>,
+    pub door_side_a: Vec<DoorId>,
+    pub door_side_b: Vec<DoorId>,
 }
 
 fn heuristic(state: &State) -> f32 {
@@ -78,7 +79,7 @@ fn move_actor(state: &State, world: &World, to: PosId) -> Option<Neighbor<State,
     Some(Neighbor::new(new_state, 1.0, Action::Move { to }))
 }
 
-fn open_door(state: &State, world: &World, door: usize) -> Option<Neighbor<State, Action>> {
+fn open_door(state: &State, world: &World, door: DoorId) -> Option<Neighbor<State, Action>> {
     let precondition = ((state.actor_pos == world.door_side_a[door])
         || (state.actor_pos == world.door_side_a[door]))
         && state.door_states[door] == DoorState::Closed;
@@ -93,19 +94,22 @@ fn open_door(state: &State, world: &World, door: usize) -> Option<Neighbor<State
     Some(Neighbor::new(new_state, 1.0, Action::OpenDoor { door }))
 }
 
-fn traverse_door(state: &State, world: &World, door: usize) -> Option<Neighbor<State, Action>> {
-    let precondition = (state.actor_pos == world.door_side_a[door]
-        || state.actor_pos == world.door_side_b[door])
+fn traverse_door(state: &State, world: &World, door: DoorId) -> Option<Neighbor<State, Action>> {
+    let actor_pos = state.actor_pos;
+    let door_side_a = world.door_side_a[door];
+    let door_side_b = world.door_side_b[door];
+
+    let precondition = (actor_pos == door_side_a || actor_pos == door_side_b)
         && state.door_states[door] == DoorState::Open;
 
     if !precondition {
         return None;
     }
 
-    let new_pos = if state.actor_pos == world.door_side_a[door] {
-        world.door_side_b[door]
+    let new_pos = if actor_pos == door_side_a {
+        door_side_b
     } else {
-        world.door_side_a[door]
+        door_side_a
     };
 
     let mut new_state = state.clone();
