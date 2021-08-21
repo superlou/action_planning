@@ -3,17 +3,20 @@ mod actions;
 
 use a_star::{a_star, Neighbor};
 use actions::{move_actor, open_door, traverse_door, Action, DoorState};
+use serde::Deserialize;
+use std::fs::read_to_string;
 
 type PosId = usize;
 type DoorId = usize;
 type PosMoveGroupId = usize;
 
-#[derive(Debug, PartialEq, Eq, Hash, Clone)]
+#[derive(Debug, PartialEq, Eq, Hash, Clone, Deserialize)]
 pub struct State {
     pub actor_pos: PosId,
     pub door_states: Vec<DoorState>,
 }
 
+#[derive(Deserialize)]
 pub struct World {
     pub pos_move_groups: Vec<PosMoveGroupId>,
     pub door_side_a: Vec<DoorId>,
@@ -48,17 +51,17 @@ fn heuristic(state: &State) -> f32 {
     distance
 }
 
-fn main() {
-    let s0 = State {
-        actor_pos: 0,
-        door_states: vec![DoorState::Closed, DoorState::Closed],
-    };
+#[derive(Deserialize)]
+struct Scenario {
+    world: World,
+    state: State,
+}
 
-    let w = World {
-        pos_move_groups: vec![1, 1, 1, 1, 2, 2, 2, 2, 3, 3],
-        door_side_a: vec![3, 7],
-        door_side_b: vec![4, 8],
-    };
+fn main() {
+    let data = read_to_string("scenario.json").unwrap();
+    let scenario: Scenario = serde_json::from_str(&data).unwrap();
+    let s0 = scenario.state;
+    let w = scenario.world;
 
     let result = a_star(&s0, &heuristic, &|s: &State| get_neighbors(s, &w));
 

@@ -1,5 +1,6 @@
 use crate::{DoorId, PosId};
 use crate::{Neighbor, State, World};
+use serde::Deserialize;
 
 #[derive(Debug, Clone)]
 pub enum Action {
@@ -8,7 +9,7 @@ pub enum Action {
     TraverseDoor { door: DoorId },
 }
 
-#[derive(Debug, PartialEq, Eq, Hash, Clone)]
+#[derive(Debug, PartialEq, Eq, Hash, Clone, Deserialize)]
 pub enum DoorState {
     Open,
     Closed,
