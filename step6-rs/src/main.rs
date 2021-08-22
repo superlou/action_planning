@@ -2,7 +2,7 @@ mod a_star;
 mod actions;
 
 use a_star::{a_star, Neighbor};
-use actions::{move_actor, open_door, traverse_door, Action, DoorState};
+use actions::{move_actor, open_door, close_door, traverse_door, Action, DoorState};
 use serde::Deserialize;
 use std::fs::read_to_string;
 
@@ -32,6 +32,7 @@ fn get_neighbors(state: &State, world: &World) -> Vec<Neighbor<State, Action>> {
 
     for i in 0..state.door_states.len() {
         actions.push(open_door(state, world, i));
+        actions.push(close_door(state, world, i));
     }
 
     for i in 0..state.door_states.len() {
@@ -41,20 +42,38 @@ fn get_neighbors(state: &State, world: &World) -> Vec<Neighbor<State, Action>> {
     actions.into_iter().flatten().collect()
 }
 
-fn heuristic(state: &State) -> f32 {
+fn heuristic(state: &State, objectives: &Vec<Objective>) -> f32 {
     let mut distance = 0.0;
 
-    if state.actor_pos != 9 {
-        distance += 1.0;
+    for obj in objectives {
+        match obj {
+            Objective::ActorPos(pos_id) => {
+                if state.actor_pos != *pos_id {
+                    distance += 1.0;
+                }
+            }
+            Objective::DoorState(door_id, door_state) => {
+                if state.door_states[*door_id] != *door_state {
+                    distance += 1.0;
+                }
+            }
+        }
     }
 
     distance
 }
 
 #[derive(Deserialize)]
+enum Objective {
+    ActorPos(PosId),
+    DoorState(DoorId, DoorState),
+}
+
+#[derive(Deserialize)]
 struct Scenario {
     world: World,
     state: State,
+    objectives: Vec<Objective>,
 }
 
 fn main() {
@@ -62,8 +81,11 @@ fn main() {
     let scenario: Scenario = serde_json::from_str(&data).unwrap();
     let s0 = scenario.state;
     let w = scenario.world;
+    let o = scenario.objectives;
 
-    let result = a_star(&s0, &heuristic, &|s: &State| get_neighbors(s, &w));
+    let result = a_star(&s0, &|s| heuristic(s, &o), &|s: &State| {
+        get_neighbors(s, &w)
+    });
 
     match result {
         Ok(path) => {

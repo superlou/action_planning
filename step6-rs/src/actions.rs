@@ -6,6 +6,7 @@ use serde::Deserialize;
 pub enum Action {
     Move { to: PosId },
     OpenDoor { door: DoorId },
+    CloseDoor { door: DoorId },
     TraverseDoor { door: DoorId },
 }
 
@@ -47,6 +48,24 @@ pub fn open_door(state: &State, world: &World, door: DoorId) -> Option<Neighbor<
     new_state.door_states[door] = DoorState::Open;
 
     Some(Neighbor::new(new_state, 1.0, Action::OpenDoor { door }))
+}
+
+pub fn close_door(state: &State, world: &World, door: DoorId) -> Option<Neighbor<State, Action>> {
+    let actor_pos = state.actor_pos;
+    let door_side_a = world.door_side_a[door];
+    let door_side_b = world.door_side_b[door];
+
+    let precondition = (actor_pos == door_side_a || actor_pos == door_side_b)
+        && state.door_states[door] == DoorState::Open;
+
+    if !precondition {
+        return None;
+    }
+
+    let mut new_state = state.clone();
+    new_state.door_states[door] = DoorState::Closed;
+
+    Some(Neighbor::new(new_state, 1.0, Action::CloseDoor { door }))
 }
 
 pub fn traverse_door(

@@ -7,5 +7,10 @@
   "state": {
     "actor_pos": 0,
     "door_states": ["Closed", "Closed"]
-  }
+  },
+  "objectives": [
+    {"ActorPos": 9},
+    {"DoorState": [0, "Closed"]},
+    {"DoorState": [1, "Closed"]}
+  ]
 }
