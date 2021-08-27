@@ -2,7 +2,7 @@ mod a_star;
 mod actions;
 
 use a_star::{a_star, Neighbor};
-use actions::{move_actor, open_door, close_door, traverse_door, Action, DoorState};
+use actions::{close_door, move_actor, open_door, traverse_door, Action, DoorState};
 use serde::Deserialize;
 use std::fs::read_to_string;
 
@@ -42,7 +42,7 @@ fn get_neighbors(state: &State, world: &World) -> Vec<Neighbor<State, Action>> {
     actions.into_iter().flatten().collect()
 }
 
-fn heuristic(state: &State, objectives: &Vec<Objective>) -> f32 {
+fn heuristic(state: &State, objectives: &[Objective]) -> f32 {
     let mut distance = 0.0;
 
     for obj in objectives {

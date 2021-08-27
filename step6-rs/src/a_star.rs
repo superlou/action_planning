@@ -39,9 +39,9 @@ where
     // Estimated cost of path from start through node to goal
     // This is an estimate of the total path cost.
     let mut f_score = HashMap::new();
-    f_score.insert(start.clone(), heuristic(&start));
+    f_score.insert(start.clone(), heuristic(start));
 
-    while open_set.len() > 0 {
+    while !open_set.is_empty() {
         open_set.sort_by(|a, b| {
             f_score
                 .get(a)
@@ -70,14 +70,14 @@ where
                     tentative_g_score + heuristic(&neighbor.state),
                 );
 
-                if !open_set.contains(&&neighbor.state) {
+                if !open_set.contains(&neighbor.state) {
                     open_set.push(neighbor.state.clone())
                 }
             }
         }
     }
 
-    return Err(());
+    Err(())
 }
 
 fn reconstruct_path<S, A>(came_from: HashMap<S, (S, A)>, current: &S) -> Vec<(S, A)>
