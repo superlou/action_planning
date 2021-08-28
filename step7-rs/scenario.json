@@ -1,0 +1,16 @@
+{
+  "world": {
+    "pos_move_groups": [1, 1, 1, 1, 2, 2, 2, 2, 3, 3],
+    "door_side_a": [3, 7],
+    "door_side_b": [4, 8]
+  },
+  "state": {
+    "actor_pos": 0,
+    "door_states": ["Closed", "Closed"]
+  },
+  "objectives": [
+    {"ActorPos": 9},
+    {"DoorState": [0, "Closed"]},
+    {"DoorState": [1, "Closed"]}
+  ]
+}
