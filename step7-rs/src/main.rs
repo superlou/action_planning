@@ -90,7 +90,8 @@ struct PlannerResult {
 fn run_scenario_from_file(scenario_filename: &str) {
     let data = read_to_string(scenario_filename).unwrap();
     let scenario: Scenario = serde_json::from_str(&data).unwrap();
-    run_scenario(scenario);
+    let result = run_scenario(scenario);
+    dbg!(result);
 }
 
 fn run_scenario(scenario: Scenario) -> PlannerResult {

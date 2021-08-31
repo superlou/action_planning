@@ -7,7 +7,7 @@ pub enum Action {
     Move { to: PosId },
     OpenDoor { door: DoorId },
     CloseDoor { door: DoorId },
-    TraverseDoor { door: DoorId },
+    TraverseDoor { door: DoorId, to: PosId },
 }
 
 #[derive(Debug, PartialEq, Eq, Hash, Clone, Deserialize)]
@@ -92,5 +92,5 @@ pub fn traverse_door(
 
     let mut new_state = state.clone();
     new_state.actor_pos = new_pos;
-    Some(Neighbor::new(new_state, 1.0, Action::TraverseDoor { door }))
+    Some(Neighbor::new(new_state, 1.0, Action::TraverseDoor { door, to: new_pos }))
 }
